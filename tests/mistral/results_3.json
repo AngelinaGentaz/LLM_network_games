@@ -1,0 +1,74 @@
+[
+  {
+    "cost": "c = 0.5",
+    "decision": "a_1 = 0",
+    "reasoning": "Choosing a_1 = 0 ensures a payoff of 0 without incurring the cost of coordination. Since Player 2's strategy is uncertain, coordinating (a_1 = 1) risks a negative payoff if Player 2 does not coordinate.",
+    "expected_payoff": "a_1=1: Best=1, Worst=-0.5; a_1=0: Best=0, Worst=0"
+  },
+  {
+    "cost": "c = 1.0",
+    "decision": "a_1 = 0",
+    "reasoning": "Player 1 has only one neighbour (Player 2). If Player 1 chooses to coordinate (a_1 = 1), the payoff depends on whether Player 2 also coordinates. The cost of coordinating is 1.0, so the best outcome is 1 - 1 = 0, and the worst outcome is -1. If Player 1 does not coordinate (a_1 = 0), the payoff is always 0, which is guaranteed and avoids the risk of a negative payoff.",
+    "expected_payoff": "a_1=1: Best=0, Worst=-1; a_1=0: Best=0, Worst=0"
+  },
+  {
+    "cost": "c = 2.0",
+    "decision": "a_1 = 0",
+    "reasoning": "If Player 2 does not coordinate, coordinating incurs a cost of 2 without any benefit. Thus, it is safer not to coordinate.",
+    "expected_payoff": "a_1=1: Best=1, Worst=-2; a_1=0: Best=1, Worst=0"
+  },
+  {
+    "cost": "c = 0.5",
+    "decision": "a_2 = 1",
+    "reasoning": "Choosing to coordinate (a_2 = 1) maximizes the potential for matching strategies with both neighbors, which can yield higher payoffs despite the coordination cost.",
+    "expected_payoff": "a_2=1: Best=2 - 0.5 = 1.5, Worst=-0.5; a_2=0: Best=2, Worst=0"
+  },
+  {
+    "cost": "c = 1.0",
+    "decision": "a_2 = 1",
+    "reasoning": "Choosing to coordinate (a_2 = 1) maximizes the potential payoff by aligning with neighbours' strategies, even with the cost of coordination.",
+    "expected_payoff": "a_2=1: Best=2, Worst=-1; a_2=0: Best=2, Worst=0"
+  },
+  {
+    "cost": "c = 2.0",
+    "decision": "a_2 = 0",
+    "reasoning": "Choosing a_2 = 1 incurs a cost of 2.0, and coordination is only beneficial if both neighbors also coordinate. Since the likelihood of both neighbors coordinating is uncertain, it is safer to avoid the coordination cost.",
+    "expected_payoff": "a_2=1: Best=2, Worst=-2; a_2=0: Best=2, Worst=0"
+  },
+  {
+    "cost": "c = 0.5",
+    "decision": "a_3 = 1",
+    "reasoning": "Since the cost of coordination is relatively low (0.5), the potential benefit of coordinating with neighbors outweighs the cost. Coordinating increases the chance of matching strategies with both Player 2 and Player 4, leading to a higher payoff.",
+    "expected_payoff": "a_3=1: Best=2, Worst=-0.5; a_3=0: Best=2, Worst=0"
+  },
+  {
+    "cost": "c = 1.0",
+    "decision": "a_3 = 0",
+    "reasoning": "Choosing a_3 = 0 avoids the cost of coordination. Since the cost of coordination is 1.0, not coordinating ensures a non-negative payoff regardless of the neighbors' actions.",
+    "expected_payoff": "a_3=1: Best=2, Worst=-1; a_3=0: Best=2, Worst=0"
+  },
+  {
+    "cost": "c = 2.0",
+    "decision": "a_3 = 0",
+    "reasoning": "Choosing a_3 = 0 avoids the cost of coordination. Since the cost of coordinating is 2.0, not coordinating ensures a non-negative payoff regardless of the neighbors' actions.",
+    "expected_payoff": "a_3=1: Best=2, Worst=-2; a_3=0: Best=2, Worst=0"
+  },
+  {
+    "cost": "c = 0.5",
+    "decision": "a_4 = 1",
+    "reasoning": "By coordinating, Player 4 maximizes the chance of matching Player 3's strategy, potentially gaining a payoff of 1 from coordination. The cost of 0.5 is offset by the potential gain.",
+    "expected_payoff": "a_4=1: Best=1, Worst=-0.5; a_4=0: Best=1, Worst=0"
+  },
+  {
+    "cost": "c = 1.0",
+    "decision": "a_4 = 0",
+    "reasoning": "Since I am Player 4, I have only one neighbour (Player 3). Coordinating (a_4 = 1) incurs a cost of 1.0. If Player 3 does not coordinate (a_3 = 0), my payoff for coordinating would be -1.0. Therefore, it is safer to not coordinate (a_4 = 0) to avoid the cost unless I have strong reason to believe Player 3 will coordinate.",
+    "expected_payoff": "a_4=1: Best=1, Worst=-1; a_4=0: Best=0, Worst=0"
+  },
+  {
+    "cost": "c = 2.0",
+    "decision": "a_4 = 0",
+    "reasoning": "Choosing a_4 = 0 avoids the cost of coordination and ensures a non-negative payoff. Since Player 4 only has one neighbour (Player 3), coordinating with Player 3 is uncertain and may not justify the cost.",
+    "expected_payoff": "a_4=1: Best=1, Worst=-2; a_4=0: Best=1, Worst=0"
+  }
+]

@@ -1,0 +1,74 @@
+[
+  {
+    "cost": "c = 0.5",
+    "decision": "a_1 = 0",
+    "reasoning": "Since Player 1 has only one neighbour (Player 2), the probability of coordination is low. The cost of coordination (0.5) is significant enough to prefer not coordinating unless there is a high certainty of matching Player 2's strategy.",
+    "expected_payoff": "a_1=1: Best=1, Worst=-0.5; a_1=0: Best=1, Worst=0"
+  },
+  {
+    "cost": "c = 1.0",
+    "decision": "a_1 = 0",
+    "reasoning": "Choosing a_1 = 0 ensures a payoff of 0 without incurring the cost of coordination. Since Player 2's strategy is uncertain, coordinating (a_1 = 1) risks a negative payoff if Player 2 does not coordinate.",
+    "expected_payoff": "a_1=1: Best=1, Worst=-1; a_1=0: Best=0, Worst=0"
+  },
+  {
+    "cost": "c = 2.0",
+    "decision": "a_1 = 0",
+    "reasoning": "Choosing a_1 = 0 avoids the cost of coordination. Since Player 2's strategy is uncertain, coordinating might not yield a higher payoff due to the coordination cost.",
+    "expected_payoff": "a_1=1: Best=1, Worst=-2; a_1=0: Best=1, Worst=0"
+  },
+  {
+    "cost": "c = 0.5",
+    "decision": "a_2 = 1",
+    "reasoning": "Choosing to coordinate (a_2 = 1) maximizes the potential payoff if neighbors also coordinate. The cost of coordination is relatively low, so the risk of a mismatch is worth taking.",
+    "expected_payoff": "a_2=1: Best=2, Worst=-0.5; a_2=0: Best=2, Worst=0"
+  },
+  {
+    "cost": "c = 1.0",
+    "decision": "a_2 = 1",
+    "reasoning": "Player 2 has two neighbors, Player 1 and Player 3. Coordinating increases the chance of matching strategies with both neighbors, potentially maximizing payoff despite the coordination cost.",
+    "expected_payoff": "a_2=1: Best=2, Worst=-1; a_2=0: Best=2, Worst=0"
+  },
+  {
+    "cost": "c = 2.0",
+    "decision": "a_2 = 0",
+    "reasoning": "The cost of coordinating is high (2.0), and there is no guarantee that neighbours will coordinate. Not coordinating avoids the cost and ensures a non-negative payoff.",
+    "expected_payoff": "a_2=1: Best=2, Worst=-2; a_2=0: Best=2, Worst=0"
+  },
+  {
+    "cost": "c = 0.5",
+    "decision": "a_3 = 1",
+    "reasoning": "Choosing to coordinate (a_3 = 1) maximizes the potential for mutual coordination with neighbors, which can yield higher payoffs if they also choose to coordinate.",
+    "expected_payoff": "a_3=1: Best=2, Worst=-0.5; a_3=0: Best=2, Worst=0"
+  },
+  {
+    "cost": "c = 1.0",
+    "decision": "a_3 = 1",
+    "reasoning": "Coordinating increases the likelihood of matching neighbours' strategies, potentially yielding higher payoffs despite the coordination cost.",
+    "expected_payoff": "a_3=1: Best=2, Worst=-1; a_3=0: Best=2, Worst=0"
+  },
+  {
+    "cost": "c = 2.0",
+    "decision": "a_3 = 0",
+    "reasoning": "The cost of coordinating is 2.0, which is a significant deterrent. To avoid this cost, it is safer to choose not to coordinate. Additionally, if either or both neighbors do not coordinate, there is no benefit to coordinating.",
+    "expected_payoff": "a_3=1: Best=2, Worst=-2; a_3=0: Best=2, Worst=0"
+  },
+  {
+    "cost": "c = 0.5",
+    "decision": "a_4 = 1",
+    "reasoning": "To maximize payoff, coordinating (a_4 = 1) is beneficial if Player 3 also coordinates. The cost of coordinating is low, and matching Player 3's strategy can yield a higher payoff.",
+    "expected_payoff": "a_4=1: Best=1, Worst=-0.5; a_4=0: Best=1, Worst=0"
+  },
+  {
+    "cost": "c = 1.0",
+    "decision": "a_4 = 0",
+    "reasoning": "Since Player 4 only has one neighbour (Player 3), the probability of matching strategies is low. Coordinating incurs a cost of 1.0, making it more beneficial to not coordinate to avoid this cost.",
+    "expected_payoff": "a_4=1: Best=1, Worst=-1; a_4=0: Best=1, Worst=0"
+  },
+  {
+    "cost": "c = 2.0",
+    "decision": "a_4 = 0",
+    "reasoning": "Choosing a_4 = 0 avoids the cost of coordination. Since Player 4 only has one neighbour (Player 3), the likelihood of matching strategies is low, making the cost of coordination more detrimental.",
+    "expected_payoff": "a_4=1: Best=1, Worst=-2; a_4=0: Best=1, Worst=0"
+  }
+]

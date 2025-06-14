@@ -1,13 +1,11 @@
 # Run 10 Monte Carlo 
 
-cd src\\line_network
+cd src\\coordination_game
 
 for i in {1..10}
 do
     echo "Running experiment $i..."
-    python simultaneous.py --players 1 2 3 4 --costs 0.5 1 2 --experiment_id $i
+    python simultaneous.py --players 1 2 3 4 --costs 0.5 1 2  --experiment_id $i --provider 'mistral'
 done
-
-echo "Monte Carlo simulation completed."
 
 

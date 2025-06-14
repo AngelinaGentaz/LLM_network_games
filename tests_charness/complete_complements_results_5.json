@@ -1,0 +1,137 @@
+[
+  {
+    "provider": "google",
+    "network": "orange",
+    "player": "A",
+    "llm_response": {
+      "decision": "a_A = 0",
+      "expected_payoff": "a_A=1: Best=33.33, Worst=0; a_A=0: Best=50, Worst=50"
+    }
+  },
+  {
+    "provider": "google",
+    "network": "orange",
+    "player": "B",
+    "llm_response": {
+      "decision": "a_B = 1",
+      "expected_payoff": "a_B=1: Best=99.99, Worst=0.0; a_B=0: Best=50, Worst=50"
+    }
+  },
+  {
+    "provider": "google",
+    "network": "orange",
+    "player": "C",
+    "llm_response": {
+      "decision": "a_C = 0",
+      "expected_payoff": "a_C=1: Best=<66.66>, Worst=<0>; a_C=0: Best=<50>, Worst=<50>"
+    }
+  },
+  {
+    "provider": "google",
+    "network": "orange",
+    "player": "D",
+    "llm_response": {
+      "decision": "a_D = 0",
+      "expected_payoff": "a_D=1: Best=99.99, Worst=0.0; a_D=0: Best=50, Worst=50"
+    }
+  },
+  {
+    "provider": "google",
+    "network": "orange",
+    "player": "E",
+    "llm_response": {
+      "decision": "a_E = 0",
+      "expected_payoff": "a_E=1: Best=33.33, Worst=0; a_E=0: Best=50, Worst=50"
+    }
+  },
+  {
+    "provider": "google",
+    "network": "green",
+    "player": "A",
+    "llm_response": {
+      "decision": "a_A = 0",
+      "expected_payoff": "a_A=1: Best=33.33, Worst=0; a_A=0: Best=50, Worst=50"
+    }
+  },
+  {
+    "provider": "google",
+    "network": "green",
+    "player": "B",
+    "llm_response": {
+      "decision": "a_B = 0",
+      "expected_payoff": "a_B=1: Best=66.66, Worst=0; a_B=0: Best=50, Worst=50"
+    }
+  },
+  {
+    "provider": "google",
+    "network": "green",
+    "player": "C",
+    "llm_response": {
+      "decision": "a_C = 0",
+      "expected_payoff": "a_C=1: Best=66.66, Worst=0; a_C=0: Best=50, Worst=50"
+    }
+  },
+  {
+    "provider": "google",
+    "network": "green",
+    "player": "D",
+    "llm_response": {
+      "decision": "a_D = 0",
+      "expected_payoff": "a_D=1: Best=<66.66>, Worst=<0.0>; a_D=0: Best=<50>, Worst=<50>"
+    }
+  },
+  {
+    "provider": "google",
+    "network": "green",
+    "player": "E",
+    "llm_response": {
+      "decision": "a_E = 0",
+      "expected_payoff": "a_E=1: Best=33.33, Worst=0; a_E=0: Best=50, Worst=50"
+    }
+  },
+  {
+    "provider": "google",
+    "network": "purple",
+    "player": "A",
+    "llm_response": {
+      "decision": "a_A = 0",
+      "expected_payoff": "a_A=1: Best=33.33, Worst=0; a_A=0: Best=50, Worst=50"
+    }
+  },
+  {
+    "provider": "google",
+    "network": "purple",
+    "player": "B",
+    "llm_response": {
+      "decision": "a_B = 0",
+      "expected_payoff": "a_B=1: Best=99.99, Worst=0.0; a_B=0: Best=50, Worst=50"
+    }
+  },
+  {
+    "provider": "google",
+    "network": "purple",
+    "player": "C",
+    "llm_response": {
+      "decision": "a_C = 0",
+      "expected_payoff": "a_C=1: Best=33.33, Worst=0; a_C=0: Best=50, Worst=50"
+    }
+  },
+  {
+    "provider": "google",
+    "network": "purple",
+    "player": "D",
+    "llm_response": {
+      "decision": "a_D = 0",
+      "expected_payoff": "a_D=1: Best=<66.66>, Worst=<0>; a_D=0: Best=<50>, Worst=<50>"
+    }
+  },
+  {
+    "provider": "google",
+    "network": "purple",
+    "player": "E",
+    "llm_response": {
+      "decision": "a_E = 0",
+      "expected_payoff": "a_E=1: Best=33.33, Worst=0; a_E=0: Best=50, Worst=50"
+    }
+  }
+]
