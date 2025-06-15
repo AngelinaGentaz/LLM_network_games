@@ -32,7 +32,7 @@
     "cfp": "min",
     "llm_response": {
       "cost": "c = 1.0",
-      "decision": "a_1 = 1"
+      "decision": "a_1 = 0"
     }
   },
   {
@@ -50,7 +50,7 @@
     "cfp": "peace",
     "llm_response": {
       "cost": "c = 1.0",
-      "decision": "a_1 = 1"
+      "decision": "a_1 = 0"
     }
   },
   {
@@ -149,7 +149,7 @@
     "cfp": "safety",
     "llm_response": {
       "cost": "c = 2.0",
-      "decision": "a_2 = 1"
+      "decision": "a_2 = 0"
     }
   },
   {

@@ -1,74 +1,326 @@
 [
   {
-    "cost": "c = 0.5",
-    "decision": "a_1 = 0",
-    "reasoning": "Player 1 is only connected to Player 2. Without knowing Player 2's choice, if a_1 = 1, the payoff is either 0.5 (if Player 2 also chooses 1) or -0.5 (if Player 2 chooses 0). Choosing a_1 = 0 ensures a payoff of 0 regardless of Player 2's choice.",
-    "expected_payoff": "a_1=1: Best=0.5, Worst=-0.5; a_1=0: Best=0, Worst=0"
+    "provider": "openai",
+    "neip": "baseline",
+    "cfp": "min",
+    "llm_response": {
+      "cost": "c = 0.5",
+      "decision": "a_1 = 1"
+    }
   },
   {
-    "cost": "c = 1.0",
-    "decision": "a_1 = 0",
-    "reasoning": "Player 1 is only connected to Player 2. Without knowing Player 2's strategy, choosing a_1 = 1 incurs a cost of 1.0. If Player 2 does not coordinate (a_2 = 0), the payoff is -1.0. By choosing a_1 = 0, there is no cost, and the payoff is 0 regardless of Player 2's choice.",
-    "expected_payoff": "a_1=1: Best=0, Worst=-1.0; a_1=0: Best=0, Worst=0"
+    "provider": "openai",
+    "neip": "baseline",
+    "cfp": "safety",
+    "llm_response": {
+      "cost": "c = 0.5",
+      "decision": "a_1 = 1"
+    }
   },
   {
-    "cost": "c = 2.0",
-    "decision": "a_1 = 0",
-    "reasoning": "Choosing a_1 = 1 incurs a cost of 2.0, and since Player 1 is only connected to Player 2, the payoff is maximized if Player 2 also chooses the same strategy. However, without certainty about Player 2's choice, the risk of a negative payoff is high when coordinating. By choosing a_1 = 0, there is no cost, and the worst-case scenario is a payoff of 0.",
-    "expected_payoff": "a_1=1: Best=1-2=-1, Worst=-2; a_1=0: Best=1, Worst=0"
+    "provider": "openai",
+    "neip": "baseline",
+    "cfp": "peace",
+    "llm_response": {
+      "cost": "c = 0.5",
+      "decision": "a_1 = 1"
+    }
   },
   {
-    "cost": "c = 0.5",
-    "decision": "a_2 = 1",
-    "reasoning": "Choosing a_2 = 1 can potentially match with both Player 1 and Player 3 if they also coordinate, leading to higher payoffs despite the cost.",
-    "expected_payoff": "a_2=1: Best=1.5, Worst=-0.5; a_2=0: Best=1, Worst=0"
+    "provider": "openai",
+    "neip": "baseline",
+    "cfp": "min",
+    "llm_response": {
+      "cost": "c = 1.0",
+      "decision": "a_1 = 0"
+    }
   },
   {
-    "cost": "c = 1.0",
-    "decision": "a_2 = 0",
-    "reasoning": "Choosing a_2 = 0 avoids the coordination cost of 1.0. Without knowing the strategies of my neighbors, the worst case for a_2 = 1 is a payoff of -1 if neither neighbor coordinates. The best-case payoff for a_2 = 0 is 0, as there is no cost and no matching needed.",
-    "expected_payoff": "a_2=1: Best=1, Worst=-1; a_2=0: Best=0, Worst=0"
+    "provider": "openai",
+    "neip": "baseline",
+    "cfp": "safety",
+    "llm_response": {
+      "cost": "c = 1.0",
+      "decision": "a_1 = 1"
+    }
   },
   {
-    "cost": "c = 2.0",
-    "decision": "a_2 = 0",
-    "reasoning": "Choosing a_2 = 1 requires both neighbors (Players 1 and 3) to also choose 1 for payoff to exceed the cost. The cost of 2.0 outweighs the benefit if even one neighbor chooses differently.",
-    "expected_payoff": "a_2=1: Best=0, Worst=-2; a_2=0: Best=2, Worst=0"
+    "provider": "openai",
+    "neip": "baseline",
+    "cfp": "peace",
+    "llm_response": {
+      "cost": "c = 1.0",
+      "decision": "a_1 = 1"
+    }
   },
   {
-    "cost": "c = 0.5",
-    "decision": "a_3 = 0",
-    "reasoning": "Choosing a_3 = 0 incurs no cost, and if either neighbor also chooses 0, I gain payoff without expense. The risk of choosing 1 is higher due to the cost, unless both neighbors also choose 1.",
-    "expected_payoff": "a_3=1: Best=1.5, Worst=-0.5; a_3=0: Best=2, Worst=0"
+    "provider": "openai",
+    "neip": "baseline",
+    "cfp": "min",
+    "llm_response": {
+      "cost": "c = 2.0",
+      "decision": "a_1 = 0"
+    }
   },
   {
-    "cost": "c = 1.0",
-    "decision": "a_3 = 0",
-    "reasoning": "Choosing a_3 = 0 avoids the coordination cost and has a potential payoff if neighbors also choose 0. Since the cost of coordination is 1.0, aligning with at least one neighbor is crucial to offset this cost.",
-    "expected_payoff": "a_3=1: Best=1, Worst=-1; a_3=0: Best=2, Worst=0"
+    "provider": "openai",
+    "neip": "baseline",
+    "cfp": "safety",
+    "llm_response": {
+      "cost": "c = 2.0",
+      "decision": "a_1 = 0"
+    }
   },
   {
-    "cost": "c = 2.0",
-    "decision": "a_3 = 0",
-    "reasoning": "Choosing a_3 = 1 requires both Player 2 and Player 4 to also coordinate to break even or gain payoff, given the cost of 2.0. If either does not coordinate, the payoff is negative. Playing a_3 = 0 avoids the cost and ensures a non-negative payoff.",
-    "expected_payoff": "a_3=1: Best=0, Worst=-2; a_3=0: Best=0, Worst=0"
+    "provider": "openai",
+    "neip": "baseline",
+    "cfp": "peace",
+    "llm_response": {
+      "cost": "c = 2.0",
+      "decision": "a_1 = 0"
+    }
   },
   {
-    "cost": "c = 0.5",
-    "decision": "a_4 = 0",
-    "reasoning": "Since Player 4 is only connected to Player 3, the decision depends on their strategy. Coordinating (a_4 = 1) incurs a cost of 0.5, and matching Player 3 only provides a payoff of 1. If Player 3 chooses not to coordinate (a_3 = 0), coordinating would result in a negative payoff. Thus, choosing not to coordinate (a_4 = 0) avoids the cost and ensures a non-negative payoff regardless of Player 3's choice.",
-    "expected_payoff": "a_4=1: Best=0.5, Worst=-0.5; a_4=0: Best=0, Worst=0"
+    "provider": "openai",
+    "neip": "baseline",
+    "cfp": "min",
+    "llm_response": {
+      "cost": "c = 0.5",
+      "decision": "a_2 = 1"
+    }
   },
   {
-    "cost": "c = 1.0",
-    "decision": "a_4 = 0",
-    "reasoning": "Player 4 is only connected to Player 3. Coordinating (a_4 = 1) incurs a cost of 1.0. Without knowing Player 3's strategy, choosing a_4 = 0 avoids any cost. Since matching strategies with Player 3 is uncertain, the potential loss with a_4 = 1 is higher.",
-    "expected_payoff": "a_4=1: Best=0, Worst=-1; a_4=0: Best=0, Worst=0"
+    "provider": "openai",
+    "neip": "baseline",
+    "cfp": "safety",
+    "llm_response": {
+      "cost": "c = 0.5",
+      "decision": "a_2 = 1"
+    }
   },
   {
-    "cost": "c = 2.0",
-    "decision": "a_4 = 0",
-    "reasoning": "Since Player 4 is only connected to Player 3, and the cost of coordinating is 2.0, the payoff will only be positive if Player 3 also chooses the same strategy. Without information on Player 3's choice, playing a_4 = 0 avoids the risk of a negative payoff.",
-    "expected_payoff": "a_4=1: Best=0, Worst=-2; a_4=0: Best=0, Worst=0"
+    "provider": "openai",
+    "neip": "baseline",
+    "cfp": "peace",
+    "llm_response": {
+      "cost": "c = 0.5",
+      "decision": "a_2 = 1"
+    }
+  },
+  {
+    "provider": "openai",
+    "neip": "baseline",
+    "cfp": "min",
+    "llm_response": {
+      "cost": "c = 1.0",
+      "decision": "a_2 = 1"
+    }
+  },
+  {
+    "provider": "openai",
+    "neip": "baseline",
+    "cfp": "safety",
+    "llm_response": {
+      "cost": "c = 1.0",
+      "decision": "a_2 = 1"
+    }
+  },
+  {
+    "provider": "openai",
+    "neip": "baseline",
+    "cfp": "peace",
+    "llm_response": {
+      "cost": "c = 1.0",
+      "decision": "a_2 = 1"
+    }
+  },
+  {
+    "provider": "openai",
+    "neip": "baseline",
+    "cfp": "min",
+    "llm_response": {
+      "cost": "c = 2.0",
+      "decision": "a_2 = 0"
+    }
+  },
+  {
+    "provider": "openai",
+    "neip": "baseline",
+    "cfp": "safety",
+    "llm_response": {
+      "cost": "c = 2.0",
+      "decision": "a_2 = 0"
+    }
+  },
+  {
+    "provider": "openai",
+    "neip": "baseline",
+    "cfp": "peace",
+    "llm_response": {
+      "cost": "c = 2.0",
+      "decision": "a_2 = 0"
+    }
+  },
+  {
+    "provider": "openai",
+    "neip": "baseline",
+    "cfp": "min",
+    "llm_response": {
+      "cost": "c = 0.5",
+      "decision": "a_3 = 1"
+    }
+  },
+  {
+    "provider": "openai",
+    "neip": "baseline",
+    "cfp": "safety",
+    "llm_response": {
+      "cost": "c = 0.5",
+      "decision": "a_3 = 1"
+    }
+  },
+  {
+    "provider": "openai",
+    "neip": "baseline",
+    "cfp": "peace",
+    "llm_response": {
+      "cost": "c = 0.5",
+      "decision": "a_3 = 1"
+    }
+  },
+  {
+    "provider": "openai",
+    "neip": "baseline",
+    "cfp": "min",
+    "llm_response": {
+      "cost": "c = 1.0",
+      "decision": "a_3 = 0"
+    }
+  },
+  {
+    "provider": "openai",
+    "neip": "baseline",
+    "cfp": "safety",
+    "llm_response": {
+      "cost": "c = 1.0",
+      "decision": "a_3 = 1"
+    }
+  },
+  {
+    "provider": "openai",
+    "neip": "baseline",
+    "cfp": "peace",
+    "llm_response": {
+      "cost": "c = 1.0",
+      "decision": "a_3 = 1"
+    }
+  },
+  {
+    "provider": "openai",
+    "neip": "baseline",
+    "cfp": "min",
+    "llm_response": {
+      "cost": "c = 2.0",
+      "decision": "a_3 = 0"
+    }
+  },
+  {
+    "provider": "openai",
+    "neip": "baseline",
+    "cfp": "safety",
+    "llm_response": {
+      "cost": "c = 2.0",
+      "decision": "a_3 = 0"
+    }
+  },
+  {
+    "provider": "openai",
+    "neip": "baseline",
+    "cfp": "peace",
+    "llm_response": {
+      "cost": "c = 2.0",
+      "decision": "a_3 = 1"
+    }
+  },
+  {
+    "provider": "openai",
+    "neip": "baseline",
+    "cfp": "min",
+    "llm_response": {
+      "cost": "c = 0.5",
+      "decision": "a_4 = 0"
+    }
+  },
+  {
+    "provider": "openai",
+    "neip": "baseline",
+    "cfp": "safety",
+    "llm_response": {
+      "cost": "c = 0.5",
+      "decision": "a_4 = 1"
+    }
+  },
+  {
+    "provider": "openai",
+    "neip": "baseline",
+    "cfp": "peace",
+    "llm_response": {
+      "cost": "c = 0.5",
+      "decision": "a_4 = 1"
+    }
+  },
+  {
+    "provider": "openai",
+    "neip": "baseline",
+    "cfp": "min",
+    "llm_response": {
+      "cost": "c = 1.0",
+      "decision": "a_4 = 0"
+    }
+  },
+  {
+    "provider": "openai",
+    "neip": "baseline",
+    "cfp": "safety",
+    "llm_response": {
+      "cost": "c = 1.0",
+      "decision": "a_4 = 1"
+    }
+  },
+  {
+    "provider": "openai",
+    "neip": "baseline",
+    "cfp": "peace",
+    "llm_response": {
+      "cost": "c = 1.0",
+      "decision": "a_4 = 0"
+    }
+  },
+  {
+    "provider": "openai",
+    "neip": "baseline",
+    "cfp": "min",
+    "llm_response": {
+      "cost": "c = 2.0",
+      "decision": "a_4 = 0"
+    }
+  },
+  {
+    "provider": "openai",
+    "neip": "baseline",
+    "cfp": "safety",
+    "llm_response": {
+      "cost": "c = 2.0",
+      "decision": "a_4 = 0"
+    }
+  },
+  {
+    "provider": "openai",
+    "neip": "baseline",
+    "cfp": "peace",
+    "llm_response": {
+      "cost": "c = 2.0",
+      "decision": "a_4 = 0"
+    }
   }
 ]

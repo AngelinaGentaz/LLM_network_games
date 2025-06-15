@@ -38,7 +38,7 @@ def format_edges(edge_list):
 
 # ======================== Prompts (ASCII‑only) ============================ #
 
-# ========= SYSTEM PROMPT =========
+# ========= SYSTEM PROMPT ========= #
 SYSTEM_PROMPT = r"""
 You are taking part in a one-shot strategic-complements network game.
 

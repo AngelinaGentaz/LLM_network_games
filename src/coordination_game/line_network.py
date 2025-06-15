@@ -1,7 +1,7 @@
 import argparse
 import json
 from dotenv import load_dotenv
-import cfp_prompts
+import prompts
 import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -14,7 +14,7 @@ def main():
     parser.add_argument("--costs", nargs="+", type=float, required=True, help="List of cost values (e.g., 0.1 0.5 1.0)")
     parser.add_argument("--experiment_id", type=int, required=True, help="Experiment iteration number")
     parser.add_argument("--provider", type=str, required=True, default = "google")
-    parser.add_argument("--cfp", type=str, default="baseline", help="Context Framing Perturbation")
+    parser.add_argument("--cfp", nargs="+", type=str, default="baseline", help="Context Framing Perturbation")
     parser.add_argument("--neip", type=str, default="baseline", help="Nash Equilibrium Invariant Perturbation")
     args = parser.parse_args()
     
@@ -44,18 +44,19 @@ def main():
    # Run experiments
     results = []
     for player_id in args.players:
-        for cost in args.costs:        
-            user_prompt_template = cfp_prompts.get_user_prompt(player_id, cost, cfp=args.cfp)
-            user_prompt = user_prompt_template.format(player_id=player_id, cost=cost)
-            print(f"Calling {args.provider} for Player {player_id} with cost {cost}...")
-            system_prompt = cfp_prompts.get_system_prompt(args.neip)
-            result = call_llm_api(api_key, system_prompt, user_prompt, player_id, cost)
-            results.append({
-                    "provider": args.provider,
-                    "neip": args.neip,
-                    "cfp": args.cfp,
-                    "llm_response": result
-                })
+        for cost in args.costs:
+            for cfp in args.cfp:       
+                user_prompt_template = prompts.get_user_prompt(player_id, cost, cfp=cfp)
+                user_prompt = user_prompt_template.format(player_id=player_id, cost=cost)
+                print(f"Calling {args.provider} for Player {player_id} with cost {cost} under {cfp}...")
+                system_prompt = prompts.get_system_prompt(args.neip)
+                result = call_llm_api(api_key, system_prompt, user_prompt, player_id, cost)
+                results.append({
+                        "provider": args.provider,
+                        "neip": args.neip,
+                        "cfp": cfp,
+                        "llm_response": result
+                    })
 
     # Save results
     with open(os.path.join(provider_dir, f"results_{args.experiment_id}.json"), "w") as f:

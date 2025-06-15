@@ -10,7 +10,7 @@ aggregate_complete_info.py
 
 Aggregates Nash equilibrium profile distributions for
 complete-information network games (substitutes & complements)
-across providers, networks, and Monte-Carlo runs.
+across providers, and network topology
 """
 
 # ---------------------------------------------------------------------

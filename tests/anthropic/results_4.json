@@ -1,74 +1,326 @@
 [
   {
-    "cost": "c = 0.5",
-    "decision": "a_1 = 1",
-    "reasoning": "As Player 1, I only have one neighbor (Player 2). If I choose a_1 = 1, I'll get a payoff of 1-0.5 = 0.5 if Player 2 also chooses 1, or -0.5 if Player 2 chooses 0. If I choose a_1 = 0, I'll get a payoff of 1 if Player 2 also chooses 0, or 0 if Player 2 chooses 1. Since the maximum payoff is higher with a_1 = 0 (1 > 0.5), but the risk is also higher (-0.5 < 0), I choose a_1 = 1 as it provides a better worst-case scenario.",
-    "expected_payoff": "a_1=1: Best=0.5, Worst=-0.5; a_1=0: Best=1, Worst=0"
+    "provider": "anthropic",
+    "neip": "baseline",
+    "cfp": "min",
+    "llm_response": {
+      "cost": "c = 0.5",
+      "decision": "a_1 = 1"
+    }
   },
   {
-    "cost": "c = 1.0",
-    "decision": "a_1 = 0",
-    "reasoning": "As Player 1, I'm only connected to Player 2. If I choose a_1 = 1, I'll pay a cost of 1.0 and only gain a benefit of 1 if Player 2 also chooses 1. If Player 2 chooses 0, I'd get a negative payoff. By choosing a_1 = 0, I avoid the coordination cost and will get a payoff of 1 if Player 2 also chooses 0. Given the uncertainty about Player 2's choice, a_1 = 0 provides a safer option with potentially equal upside.",
-    "expected_payoff": "a_1=1: Best=0, Worst=-1; a_1=0: Best=1, Worst=0"
+    "provider": "anthropic",
+    "neip": "baseline",
+    "cfp": "safety",
+    "llm_response": {
+      "cost": "c = 0.5",
+      "decision": "a_1 = 1"
+    }
   },
   {
-    "cost": "c = 2.0",
-    "decision": "a_1 = 0",
-    "reasoning": "As Player 1, I'm only connected to Player 2. If I choose a_1 = 1, I incur a cost of 2.0 and can at most gain 1 from coordinating with Player 2. This results in a maximum payoff of -1. If I choose a_1 = 0, I avoid the cost and can at best gain 1 from coordinating with Player 2 (if they also choose 0), resulting in a maximum payoff of 1. Since the best-case scenario for a_1 = 0 exceeds the best-case for a_1 = 1, I choose not to coordinate.",
-    "expected_payoff": "a_1=1: Best=-1, Worst=-2; a_1=0: Best=1, Worst=0"
+    "provider": "anthropic",
+    "neip": "baseline",
+    "cfp": "peace",
+    "llm_response": {
+      "cost": "c = 0.5",
+      "decision": "a_1 = 1"
+    }
   },
   {
-    "cost": "c = 0.5",
-    "decision": "a_2 = 1",
-    "reasoning": "As Player 2, I have two neighbors (Players 1 and 3). If I choose a_2 = 1, I pay a cost of 0.5 but can potentially gain up to 2 points by coordinating with both neighbors. Even in the worst case where neither neighbor coordinates, I still get -0.5, which is better than the worst case of a_2 = 0 where I get 0 if both neighbors choose 1. The expected benefit outweighs the cost.",
-    "expected_payoff": "a_2=1: Best=1.5 (both neighbors choose 1), Worst=-0.5 (both neighbors choose 0); a_2=0: Best=2 (both neighbors choose 0), Worst=0 (both neighbors choose 1)"
+    "provider": "anthropic",
+    "neip": "baseline",
+    "cfp": "min",
+    "llm_response": {
+      "cost": "c = 1.0",
+      "decision": "a_1 = 0"
+    }
   },
   {
-    "cost": "c = 1.0",
-    "decision": "a_2 = 0",
-    "reasoning": "As Player 2, I have two neighbors (Players 1 and 3). If I choose a_2 = 1, I incur a cost of 1.0 and can gain at most 2 if both neighbors also choose 1. However, if they both choose 0, I'd get -1 (0 matches minus cost). With a_2 = 0, I avoid the cost and can get up to 2 if both neighbors choose 0, or at worst 0 if both choose 1. Since a_2 = 0 has better worst-case outcome and equal best-case outcome (after accounting for cost), it's the safer choice.",
-    "expected_payoff": "a_2=1: Best=1 (2 matches minus cost 1), Worst=-1 (0 matches minus cost 1); a_2=0: Best=2 (2 matches, no cost), Worst=0 (0 matches, no cost)"
+    "provider": "anthropic",
+    "neip": "baseline",
+    "cfp": "safety",
+    "llm_response": {
+      "cost": "c = 1.0",
+      "decision": "a_1 = 1"
+    }
   },
   {
-    "cost": "c = 2.0",
-    "decision": "a_2 = 0",
-    "reasoning": "As Player 2, I have two neighbors (Players 1 and 3). If I choose a_2 = 1, I incur a cost of 2.0 but can gain at most 2 (if both neighbors also choose 1). However, if I choose a_2 = 0, I avoid the cost and can still gain up to 2 if both neighbors choose 0. Since the maximum potential gain is the same but a_2 = 0 avoids the cost, it's the better strategy.",
-    "expected_payoff": "a_2=1: Best=0 (both neighbors choose 1, gaining 2 but paying cost 2), Worst=-2 (both neighbors choose 0, gaining 0 but paying cost 2); a_2=0: Best=2 (both neighbors choose 0, gaining 2 and no cost), Worst=0 (both neighbors choose 1, gaining 0 and no cost)"
+    "provider": "anthropic",
+    "neip": "baseline",
+    "cfp": "peace",
+    "llm_response": {
+      "cost": "c = 1.0",
+      "decision": "a_1 = 0"
+    }
   },
   {
-    "cost": "c = 0.5",
-    "decision": "a_3 = 1",
-    "reasoning": "As Player 3, I'm connected to Players 2 and 4. If I choose a_3 = 1, I can potentially coordinate with both neighbors (earning 2 points) at a cost of 0.5, giving a maximum payoff of 1.5. If I choose a_3 = 0, my maximum payoff is 2 (if both neighbors also choose 0), but this is unlikely as coordination on 1 is generally more beneficial for the network. The expected value of choosing 1 is higher.",
-    "expected_payoff": "a_3=1: Best=1.5 (both neighbors choose 1), Worst=-0.5 (both neighbors choose 0); a_3=0: Best=2 (both neighbors choose 0), Worst=0 (both neighbors choose 1)"
+    "provider": "anthropic",
+    "neip": "baseline",
+    "cfp": "min",
+    "llm_response": {
+      "cost": "c = 2.0",
+      "decision": "a_1 = 0"
+    }
   },
   {
-    "cost": "c = 1.0",
-    "decision": "a_3 = 0",
-    "reasoning": "As Player 3, I'm connected to Players 2 and 4. If I choose a_3 = 1, I incur a cost of 1.0 and need both neighbors to also choose 1 to get a positive payoff. If I choose a_3 = 0, I avoid the cost and can get a payoff of 2 if both neighbors choose 0. Since the coordination benefit equals the cost, the risk-minimizing strategy is to choose 0.",
-    "expected_payoff": "a_3=1: Best=1, Worst=-1; a_3=0: Best=2, Worst=0"
+    "provider": "anthropic",
+    "neip": "baseline",
+    "cfp": "safety",
+    "llm_response": {
+      "cost": "c = 2.0",
+      "decision": "a_1 = 0"
+    }
   },
   {
-    "cost": "c = 2.0",
-    "decision": "a_3 = 0",
-    "reasoning": "As Player 3, I'm connected to Players 2 and 4. If I choose a_3 = 1, I incur a cost of 2.0 and can at most gain 2 (if both neighbors also choose 1). This gives a maximum payoff of 0, which is no better than choosing 0 in the best case. If I choose a_3 = 0, I avoid the coordination cost and can still get a payoff of 2 if both neighbors choose 0. The worst case for a_3 = 0 is 0 (if both neighbors choose 1), which matches the best case for a_3 = 1. Therefore, a_3 = 0 dominates.",
-    "expected_payoff": "a_3=1: Best=0, Worst=-2; a_3=0: Best=2, Worst=0"
+    "provider": "anthropic",
+    "neip": "baseline",
+    "cfp": "peace",
+    "llm_response": {
+      "cost": "c = 2.0",
+      "decision": "a_1 = 0"
+    }
   },
   {
-    "cost": "c = 0.5",
-    "decision": "a_4 = 1",
-    "reasoning": "As Player 4, I'm only connected to Player 3. If Player 3 chooses a_3 = 1, and I choose a_4 = 1, I get 1 - 0.5 = 0.5 utility. If Player 3 chooses a_3 = 0 and I choose a_4 = 0, I get 1 utility. If we mismatch, I get 0 utility. Since Player 3 is connected to both Players 2 and 4, they have stronger incentive to coordinate (a_3 = 1), so my best response is a_4 = 1.",
-    "expected_payoff": "a_4=1: Best=0.5, Worst=-0.5; a_4=0: Best=1, Worst=0"
+    "provider": "anthropic",
+    "neip": "baseline",
+    "cfp": "min",
+    "llm_response": {
+      "cost": "c = 0.5",
+      "decision": "a_2 = 1"
+    }
   },
   {
-    "cost": "c = 1.0",
-    "decision": "a_4 = 0",
-    "reasoning": "As Player 4, I'm only connected to Player 3. If I choose a_4 = 1, I gain 1 point if Player 3 also chooses 1, but I must pay the cost c = 1.0, resulting in a maximum payoff of 0. If Player 3 chooses 0, my payoff would be -1.0. By choosing a_4 = 0, I gain 1 point if Player 3 also chooses 0, with no cost, resulting in a payoff of 1. If Player 3 chooses 1, my payoff would be 0. Therefore, a_4 = 0 dominates a_4 = 1.",
-    "expected_payoff": "a_4=1: Best=0, Worst=-1; a_4=0: Best=1, Worst=0"
+    "provider": "anthropic",
+    "neip": "baseline",
+    "cfp": "safety",
+    "llm_response": {
+      "cost": "c = 0.5",
+      "decision": "a_2 = 1"
+    }
   },
   {
-    "cost": "c = 2.0",
-    "decision": "a_4 = 0",
-    "reasoning": "As Player 4, I'm only connected to Player 3. If I choose a_4 = 1, I pay a cost of 2.0 and only gain 1 if Player 3 also chooses 1. This means my maximum payoff with a_4 = 1 is -1 (if Player 3 chooses 1), and my minimum is -2 (if Player 3 chooses 0). If I choose a_4 = 0, my payoff is 1 if Player 3 chooses 0, and 0 if Player 3 chooses 1. Since the best outcome with a_4 = 0 (payoff 1) is better than the best outcome with a_4 = 1 (payoff -1), I choose a_4 = 0.",
-    "expected_payoff": "a_4=1: Best=-1, Worst=-2; a_4=0: Best=1, Worst=0"
+    "provider": "anthropic",
+    "neip": "baseline",
+    "cfp": "peace",
+    "llm_response": {
+      "cost": "c = 0.5",
+      "decision": "a_2 = 1"
+    }
+  },
+  {
+    "provider": "anthropic",
+    "neip": "baseline",
+    "cfp": "min",
+    "llm_response": {
+      "cost": "c = 1.0",
+      "decision": "a_2 = 0"
+    }
+  },
+  {
+    "provider": "anthropic",
+    "neip": "baseline",
+    "cfp": "safety",
+    "llm_response": {
+      "cost": "c = 1.0",
+      "decision": "a_2 = 1"
+    }
+  },
+  {
+    "provider": "anthropic",
+    "neip": "baseline",
+    "cfp": "peace",
+    "llm_response": {
+      "cost": "c = 1.0",
+      "decision": "a_2 = 1"
+    }
+  },
+  {
+    "provider": "anthropic",
+    "neip": "baseline",
+    "cfp": "min",
+    "llm_response": {
+      "cost": "c = 2.0",
+      "decision": "a_2 = 0"
+    }
+  },
+  {
+    "provider": "anthropic",
+    "neip": "baseline",
+    "cfp": "safety",
+    "llm_response": {
+      "cost": "c = 2.0",
+      "decision": "a_2 = 1"
+    }
+  },
+  {
+    "provider": "anthropic",
+    "neip": "baseline",
+    "cfp": "peace",
+    "llm_response": {
+      "cost": "c = 2.0",
+      "decision": "a_2 = 0"
+    }
+  },
+  {
+    "provider": "anthropic",
+    "neip": "baseline",
+    "cfp": "min",
+    "llm_response": {
+      "cost": "c = 0.5",
+      "decision": "a_3 = 1"
+    }
+  },
+  {
+    "provider": "anthropic",
+    "neip": "baseline",
+    "cfp": "safety",
+    "llm_response": {
+      "cost": "c = 0.5",
+      "decision": "a_3 = 1"
+    }
+  },
+  {
+    "provider": "anthropic",
+    "neip": "baseline",
+    "cfp": "peace",
+    "llm_response": {
+      "cost": "c = 0.5",
+      "decision": "a_3 = 1"
+    }
+  },
+  {
+    "provider": "anthropic",
+    "neip": "baseline",
+    "cfp": "min",
+    "llm_response": {
+      "cost": "c = 1.0",
+      "decision": "a_3 = 0"
+    }
+  },
+  {
+    "provider": "anthropic",
+    "neip": "baseline",
+    "cfp": "safety",
+    "llm_response": {
+      "cost": "c = 1.0",
+      "decision": "a_3 = 1"
+    }
+  },
+  {
+    "provider": "anthropic",
+    "neip": "baseline",
+    "cfp": "peace",
+    "llm_response": {
+      "cost": "c = 1.0",
+      "decision": "a_3 = 0"
+    }
+  },
+  {
+    "provider": "anthropic",
+    "neip": "baseline",
+    "cfp": "min",
+    "llm_response": {
+      "cost": "c = 2.0",
+      "decision": "a_3 = 0"
+    }
+  },
+  {
+    "provider": "anthropic",
+    "neip": "baseline",
+    "cfp": "safety",
+    "llm_response": {
+      "cost": "c = 2.0",
+      "decision": "a_3 = 1"
+    }
+  },
+  {
+    "provider": "anthropic",
+    "neip": "baseline",
+    "cfp": "peace",
+    "llm_response": {
+      "cost": "c = 2.0",
+      "decision": "a_3 = 0"
+    }
+  },
+  {
+    "provider": "anthropic",
+    "neip": "baseline",
+    "cfp": "min",
+    "llm_response": {
+      "cost": "c = 0.5",
+      "decision": "a_4 = 1"
+    }
+  },
+  {
+    "provider": "anthropic",
+    "neip": "baseline",
+    "cfp": "safety",
+    "llm_response": {
+      "cost": "c = 0.5",
+      "decision": "a_4 = 1"
+    }
+  },
+  {
+    "provider": "anthropic",
+    "neip": "baseline",
+    "cfp": "peace",
+    "llm_response": {
+      "cost": "c = 0.5",
+      "decision": "a_4 = 1"
+    }
+  },
+  {
+    "provider": "anthropic",
+    "neip": "baseline",
+    "cfp": "min",
+    "llm_response": {
+      "cost": "c = 1.0",
+      "decision": "a_4 = 0"
+    }
+  },
+  {
+    "provider": "anthropic",
+    "neip": "baseline",
+    "cfp": "safety",
+    "llm_response": {
+      "cost": "c = 1.0",
+      "decision": "a_4 = 0"
+    }
+  },
+  {
+    "provider": "anthropic",
+    "neip": "baseline",
+    "cfp": "peace",
+    "llm_response": {
+      "cost": "c = 1.0",
+      "decision": "a_4 = 0"
+    }
+  },
+  {
+    "provider": "anthropic",
+    "neip": "baseline",
+    "cfp": "min",
+    "llm_response": {
+      "cost": "c = 2.0",
+      "decision": "a_4 = 0"
+    }
+  },
+  {
+    "provider": "anthropic",
+    "neip": "baseline",
+    "cfp": "safety",
+    "llm_response": {
+      "cost": "c = 2.0",
+      "decision": "a_4 = 0"
+    }
+  },
+  {
+    "provider": "anthropic",
+    "neip": "baseline",
+    "cfp": "peace",
+    "llm_response": {
+      "cost": "c = 2.0",
+      "decision": "a_4 = 0"
+    }
   }
 ]

@@ -1,6 +1,6 @@
 [
   {
-    "provider": "openai",
+    "provider": "anthropic",
     "neip": "baseline",
     "cfp": "min",
     "llm_response": {
@@ -9,7 +9,7 @@
     }
   },
   {
-    "provider": "openai",
+    "provider": "anthropic",
     "neip": "baseline",
     "cfp": "safety",
     "llm_response": {
@@ -18,7 +18,7 @@
     }
   },
   {
-    "provider": "openai",
+    "provider": "anthropic",
     "neip": "baseline",
     "cfp": "peace",
     "llm_response": {
@@ -27,25 +27,25 @@
     }
   },
   {
-    "provider": "openai",
+    "provider": "anthropic",
     "neip": "baseline",
     "cfp": "min",
     "llm_response": {
       "cost": "c = 1.0",
-      "decision": "a_1 = 1"
+      "decision": "a_1 = 0"
     }
   },
   {
-    "provider": "openai",
+    "provider": "anthropic",
     "neip": "baseline",
     "cfp": "safety",
     "llm_response": {
       "cost": "c = 1.0",
-      "decision": "a_1 = 1"
+      "decision": "a_1 = 0"
     }
   },
   {
-    "provider": "openai",
+    "provider": "anthropic",
     "neip": "baseline",
     "cfp": "peace",
     "llm_response": {
@@ -54,7 +54,7 @@
     }
   },
   {
-    "provider": "openai",
+    "provider": "anthropic",
     "neip": "baseline",
     "cfp": "min",
     "llm_response": {
@@ -63,7 +63,7 @@
     }
   },
   {
-    "provider": "openai",
+    "provider": "anthropic",
     "neip": "baseline",
     "cfp": "safety",
     "llm_response": {
@@ -72,7 +72,7 @@
     }
   },
   {
-    "provider": "openai",
+    "provider": "anthropic",
     "neip": "baseline",
     "cfp": "peace",
     "llm_response": {
@@ -81,7 +81,7 @@
     }
   },
   {
-    "provider": "openai",
+    "provider": "anthropic",
     "neip": "baseline",
     "cfp": "min",
     "llm_response": {
@@ -90,7 +90,7 @@
     }
   },
   {
-    "provider": "openai",
+    "provider": "anthropic",
     "neip": "baseline",
     "cfp": "safety",
     "llm_response": {
@@ -99,7 +99,7 @@
     }
   },
   {
-    "provider": "openai",
+    "provider": "anthropic",
     "neip": "baseline",
     "cfp": "peace",
     "llm_response": {
@@ -108,7 +108,7 @@
     }
   },
   {
-    "provider": "openai",
+    "provider": "anthropic",
     "neip": "baseline",
     "cfp": "min",
     "llm_response": {
@@ -117,7 +117,7 @@
     }
   },
   {
-    "provider": "openai",
+    "provider": "anthropic",
     "neip": "baseline",
     "cfp": "safety",
     "llm_response": {
@@ -126,7 +126,7 @@
     }
   },
   {
-    "provider": "openai",
+    "provider": "anthropic",
     "neip": "baseline",
     "cfp": "peace",
     "llm_response": {
@@ -135,7 +135,7 @@
     }
   },
   {
-    "provider": "openai",
+    "provider": "anthropic",
     "neip": "baseline",
     "cfp": "min",
     "llm_response": {
@@ -144,7 +144,7 @@
     }
   },
   {
-    "provider": "openai",
+    "provider": "anthropic",
     "neip": "baseline",
     "cfp": "safety",
     "llm_response": {
@@ -153,7 +153,7 @@
     }
   },
   {
-    "provider": "openai",
+    "provider": "anthropic",
     "neip": "baseline",
     "cfp": "peace",
     "llm_response": {
@@ -162,7 +162,7 @@
     }
   },
   {
-    "provider": "openai",
+    "provider": "anthropic",
     "neip": "baseline",
     "cfp": "min",
     "llm_response": {
@@ -171,16 +171,16 @@
     }
   },
   {
-    "provider": "openai",
+    "provider": "anthropic",
     "neip": "baseline",
     "cfp": "safety",
     "llm_response": {
-      "cost": "c = 0.5",
+       "cost": "c = 0.5",
       "decision": "a_3 = 1"
     }
   },
   {
-    "provider": "openai",
+    "provider": "anthropic",
     "neip": "baseline",
     "cfp": "peace",
     "llm_response": {
@@ -189,16 +189,16 @@
     }
   },
   {
-    "provider": "openai",
+    "provider": "anthropic",
     "neip": "baseline",
     "cfp": "min",
     "llm_response": {
       "cost": "c = 1.0",
-      "decision": "a_3 = 1"
+      "decision": "a_3 = 0"
     }
   },
   {
-    "provider": "openai",
+    "provider": "anthropic",
     "neip": "baseline",
     "cfp": "safety",
     "llm_response": {
@@ -207,7 +207,7 @@
     }
   },
   {
-    "provider": "openai",
+    "provider": "anthropic",
     "neip": "baseline",
     "cfp": "peace",
     "llm_response": {
@@ -216,7 +216,7 @@
     }
   },
   {
-    "provider": "openai",
+    "provider": "anthropic",
     "neip": "baseline",
     "cfp": "min",
     "llm_response": {
@@ -225,16 +225,16 @@
     }
   },
   {
-    "provider": "openai",
+    "provider": "anthropic",
     "neip": "baseline",
     "cfp": "safety",
     "llm_response": {
       "cost": "c = 2.0",
-      "decision": "a_3 = 0"
+      "decision": "a_3 = 1"
     }
   },
   {
-    "provider": "openai",
+    "provider": "anthropic",
     "neip": "baseline",
     "cfp": "peace",
     "llm_response": {
@@ -243,7 +243,7 @@
     }
   },
   {
-    "provider": "openai",
+    "provider": "anthropic",
     "neip": "baseline",
     "cfp": "min",
     "llm_response": {
@@ -252,7 +252,7 @@
     }
   },
   {
-    "provider": "openai",
+    "provider": "anthropic",
     "neip": "baseline",
     "cfp": "safety",
     "llm_response": {
@@ -261,7 +261,7 @@
     }
   },
   {
-    "provider": "openai",
+    "provider": "anthropic",
     "neip": "baseline",
     "cfp": "peace",
     "llm_response": {
@@ -270,7 +270,7 @@
     }
   },
   {
-    "provider": "openai",
+    "provider": "anthropic",
     "neip": "baseline",
     "cfp": "min",
     "llm_response": {
@@ -279,16 +279,16 @@
     }
   },
   {
-    "provider": "openai",
+    "provider": "anthropic",
     "neip": "baseline",
     "cfp": "safety",
     "llm_response": {
       "cost": "c = 1.0",
-      "decision": "a_4 = 0"
+      "decision": "a_4 = 1"
     }
   },
   {
-    "provider": "openai",
+    "provider": "anthropic",
     "neip": "baseline",
     "cfp": "peace",
     "llm_response": {
@@ -297,7 +297,7 @@
     }
   },
   {
-    "provider": "openai",
+    "provider": "anthropic",
     "neip": "baseline",
     "cfp": "min",
     "llm_response": {
@@ -306,7 +306,7 @@
     }
   },
   {
-    "provider": "openai",
+    "provider": "anthropic",
     "neip": "baseline",
     "cfp": "safety",
     "llm_response": {
@@ -315,7 +315,7 @@
     }
   },
   {
-    "provider": "openai",
+    "provider": "anthropic",
     "neip": "baseline",
     "cfp": "peace",
     "llm_response": {
