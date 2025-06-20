@@ -22,7 +22,7 @@ def call_mistral_api(api_key, system_prompt, user_prompt, player_id, cost):
     ]
 
     response = client.chat.complete(
-        model="mistral-small-latest",
+        model="mistral-medium-2505",
         messages=messages,
         temperature=0.7,
         max_tokens=1024,

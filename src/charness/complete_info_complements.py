@@ -49,7 +49,7 @@ GAME BASICS
 - Network: the undirected graph for the current round is shown to all
   players before they choose.
 - Actions: each player i chooses a_i in {0, 1},
-           where 1 = Active / contribute, 0 = Inactive.
+           where 1 = Active, 0 = Inactive.
 
 --------------------------------------------------------------------
 PAYOFF FUNCTION  (common knowledge)
@@ -64,8 +64,6 @@ Interpretation
 --------------
 - If you choose Inactive (a_i = 0), you receive 50.
 - If you choose Active (a_i = 1), you earn 33.33 for each Active neighbour.
-- Thus being Active pays off only if at least two neighbours are Active
-  (2 * 33.33 ≈ 66.66 > 50).
 
 --------------------------------------------------------------------
 GAME RULES
@@ -91,27 +89,19 @@ Your neighbours: {neighbour_list}
 ----------------------------------------------------------------
 ACTION CHOICES
 ----------------------------------------------------------------
-- a_{player_label} = 1  then  Active / contribute   (no upfront cost)
-- a_{player_label} = 0  tehn  Inactive              (secure payoff)
-
-Payoff recap for you:
-  u_{player_label}(a) = 50        if a_{player_label} = 0,
-                       = 33.33 * (# of Active neighbours)
-                              if a_{player_label} = 1.
+- a_{player_label} = 1  then  Active
+- a_{player_label} = 0  tehn  Inactive
 
 ----------------------------------------------------------------
 YOUR TASK
 ----------------------------------------------------------------
 1. Decide whether to play a_{player_label} = 0 or a_{player_label} = 1.
-2. Compute your WORST-CASE and BEST-CASE payoffs under each action.
 
 ----------------------------------------------------------------
 OUTPUT FORMAT  (JSON ONLY no extra text, do NOT output your interior chain of thoughts)
 ----------------------------------------------------------------
 {{
   "decision": "a_{player_label} = <0 or 1>",
-  "expected_payoff": "a_{player_label}=1: Best=<…>, Worst=<…>; \
-a_{player_label}=0: Best=<…>, Worst=<…>"
 }}
 """
 

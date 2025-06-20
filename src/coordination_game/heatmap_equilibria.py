@@ -11,36 +11,47 @@ import matplotlib.pyplot as plt
 DIR_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 TESTS_DIR = os.path.join(DIR_ROOT, "tests")
 
+# Mapping provider folder name -> human readable model string
+MODEL_MAP = {
+    "anthropic": "Claude 3.7 Sonnet",
+    "google":    "Gemini 2.0 Flash",
+    "openai":    "GPT-4o",
+    "mistral":   "mistral-medium-2505",
+}
+
 # ------------------------------------------------------------
 # Helper functions
 # ------------------------------------------------------------
-
 def parse_file(path):
-    """Return a mapping cost -> profile tuple for a single result file."""
+    """Parse a results file and return {cfp: {cost: profile}}."""
     with open(path, "r") as f:
         data = json.load(f)
-    by_cost = defaultdict(dict)
+
+    scenarios = defaultdict(lambda: defaultdict(dict))
     for entry in data:
+        cfp = entry.get("cfp")
         resp = entry.get("llm_response", {})
-        cost = float(resp.get("cost", "c = 0").split("=")[1].strip())
         decision = resp.get("decision", "")
         if "=" not in decision:
             continue
+        cost = float(resp.get("cost", "c = 0").split("=")[1].strip())
         pid_part, val_part = decision.split("=")
         pid = int(pid_part.split("_")[1].strip())
         val = int(val_part.strip())
-        by_cost[cost][pid] = val
-    out = {}
-    for cost, decisions in by_cost.items():
-        profile = tuple(decisions[i] for i in sorted(decisions))
-        out[cost] = profile
+        scenarios[cfp][cost][pid] = val
+
+    out = defaultdict(dict)
+    for cfp_key, cost_map in scenarios.items():
+        for cost, decisions in cost_map.items():
+            profile = tuple(decisions[i] for i in sorted(decisions))
+            out[cfp_key][cost] = profile
     return out
 
 
 def is_equilibrium(profile, cost):
     """Check if profile is a Nash equilibrium for the given cost."""
     all_zero = (0, 0, 0, 0)
-    all_one = (1, 1, 1, 1)
+    all_one  = (1, 1, 1, 1)
     if cost < 1.0:
         return profile == all_one
     elif cost == 1.0:
@@ -48,67 +59,100 @@ def is_equilibrium(profile, cost):
     else:
         return profile == all_zero
 
-# ------------------------------------------------------------
-# Aggregate probabilities per provider and cost
-# ------------------------------------------------------------
-provider_dirs = [d for d in glob.glob(os.path.join(TESTS_DIR, "*")) if os.path.isdir(d)]
-if not provider_dirs:
-    raise RuntimeError("No provider data found in /tests directory")
 
-results = {}
-all_costs = set()
-for prov_dir in provider_dirs:
-    prov = os.path.basename(prov_dir)
-    files = sorted(glob.glob(os.path.join(prov_dir, "results_*.json")))
-    if not files:
-        continue
-    total = defaultdict(int)
-    eq = defaultdict(int)
-    for fp in files:
-        parsed = parse_file(fp)
-        for cost, profile in parsed.items():
-            total[cost] += 1
-            if is_equilibrium(profile, cost):
-                eq[cost] += 1
-    cost_probs = {c: (eq[c] / total[c]) for c in total}
-    results[prov] = cost_probs
-    all_costs.update(total.keys())
+def main():
+    # ------------------------------------------------------------
+    # Aggregate probabilities per provider, cost and CFP
+    # ------------------------------------------------------------
+    provider_dirs = [
+        d for d in glob.glob(os.path.join(TESTS_DIR, "*"))
+        if os.path.isdir(d)
+    ]
+    if not provider_dirs:
+        raise RuntimeError(f"No provider data found in {TESTS_DIR!r}")
 
-if not results:
-    raise RuntimeError("No result files parsed")
+    # structure: results[cfp][provider][cost] -> {'eq': int, 'total': int}
+    results = defaultdict(
+        lambda: defaultdict(lambda: defaultdict(lambda: {'eq': 0, 'total': 0}))
+    )
+    all_costs = set()
+    all_cfps  = set()
 
-providers = sorted(results)
-cost_values = sorted(all_costs)
+    for prov_dir in provider_dirs:
+        prov = os.path.basename(prov_dir)
+        files = sorted(glob.glob(os.path.join(prov_dir, "results_*.json")))
+        for fp in files:
+            parsed = parse_file(fp)
+            for cfp_key, cost_map in parsed.items():
+                all_cfps.add(cfp_key)
+                for cost, profile in cost_map.items():
+                    all_costs.add(cost)
+                    rec = results[cfp_key][prov][cost]
+                    rec['total'] += 1
+                    if is_equilibrium(profile, cost):
+                        rec['eq'] += 1
 
-heatmap = np.full((len(providers), len(cost_values)), np.nan)
-for i, prov in enumerate(providers):
-    for j, c in enumerate(cost_values):
-        heatmap[i, j] = results.get(prov, {}).get(c, np.nan)
+    if not all_cfps:
+        raise RuntimeError("No result files parsed")
 
-# ------------------------------------------------------------
-# Plot heatmap
-# ------------------------------------------------------------
-fig, ax = plt.subplots(figsize=(1.5 * len(cost_values), 0.8 * len(providers) + 2))
-im = ax.imshow(heatmap, cmap="Blues", vmin=0, vmax=1)
+    provider_keys  = sorted(os.path.basename(d) for d in provider_dirs)
+    cost_values    = sorted(all_costs)
+    cfp_keys       = sorted(all_cfps)
+    provider_labels = [MODEL_MAP.get(p, p.capitalize()) for p in provider_keys]
 
-ax.set_xticks(np.arange(len(cost_values)))
-ax.set_xticklabels([str(c) for c in cost_values])
-ax.set_yticks(np.arange(len(providers)))
-ax.set_yticklabels([p.capitalize() for p in providers])
-ax.set_xlabel("Cost")
-ax.set_ylabel("Provider")
+    # build heatmaps
+    heatmaps = {}
+    for cfp in cfp_keys:
+        mat = np.full((len(provider_keys), len(cost_values)), np.nan)
+        for i, prov in enumerate(provider_keys):
+            for j, c in enumerate(cost_values):
+                rec = results[cfp].get(prov, {}).get(c)
+                if rec and rec['total'] > 0:
+                    mat[i, j] = rec['eq'] / rec['total']
+        heatmaps[cfp] = mat
 
-for i in range(len(providers)):
-    for j in range(len(cost_values)):
-        val = heatmap[i, j]
-        if not np.isnan(val):
-            ax.text(j, i, f"{val:.2f}", ha="center", va="center", color="black")
+    # ------------------------------------------------------------
+    # Plot heatmap
+    # ------------------------------------------------------------
+    fig, axes = plt.subplots(
+        1, len(cfp_keys),
+        figsize=(1 * len(cost_values) * len(cfp_keys),
+                 len(provider_keys) ),
+        sharey=True
+    )
+    if len(cfp_keys) == 1:
+        axes = [axes]
 
-cbar = fig.colorbar(im, ax=ax, fraction=0.046, pad=0.04)
-cbar.set_label("Equilibrium probability")
-fig.tight_layout()
+    ims = []
+    for idx, cfp in enumerate(cfp_keys):
+        ax = axes[idx]
+        mat = heatmaps[cfp]
+        im = ax.imshow(mat, cmap="Blues", vmin=0, vmax=1)
+        ims.append(im)
 
-out_path = os.path.join(TESTS_DIR, "coordination_heatmap.png")
-plt.savefig(out_path, bbox_inches="tight")
-plt.close()
-print(f"Saved heatmap: {out_path}")
+        ax.set_title(f"CFP = {cfp}")
+        ax.set_xticks(range(len(cost_values)))
+        ax.set_xticklabels([str(c) for c in cost_values])
+        ax.set_yticks(range(len(provider_keys)))
+        ax.set_yticklabels(provider_labels)
+        ax.set_xlabel("Cost")
+        if idx == 0:
+            ax.set_ylabel("Provider")
+
+        for i in range(len(provider_keys)):
+            for j in range(len(cost_values)):
+                val = mat[i, j]
+                if not np.isnan(val):
+                    ax.text(j, i, f"{val:.2f}",
+                            ha="center", va="center", color="white" if val>0.6 else "black")
+
+
+    fig.tight_layout()
+    out_path = os.path.join(TESTS_DIR, "coordination_heatmap.png")
+    fig.savefig(out_path, bbox_inches="tight", dpi=300)
+    plt.close(fig)
+    print(f"Saved heatmap: {out_path}")
+
+
+if __name__ == "__main__":
+    main()
