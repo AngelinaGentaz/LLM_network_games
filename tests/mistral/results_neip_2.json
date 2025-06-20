@@ -1,0 +1,362 @@
+[
+  {
+    "provider": "mistral",
+    "neip": "global_scale",
+    "cfp": "min",
+    "llm_response": {
+      "cost": "c = 0.5",
+      "decision": "a_1 = 1",
+      "expected_payoff": "a_1=1: Best=99.5, Worst=49.5; a_1=0: Best=50, Worst=0"
+    }
+  },
+  {
+    "provider": "mistral",
+    "neip": "global_scale",
+    "cfp": "safety",
+    "llm_response": {
+      "cost": "c = 0.5",
+      "decision": "a_1 = 1",
+      "expected_payoff": "a_1=1: Best=99.5, Worst=49.5; a_1=0: Best=50, Worst=0"
+    }
+  },
+  {
+    "provider": "mistral",
+    "neip": "global_scale",
+    "cfp": "peace",
+    "llm_response": {
+      "cost": "c = 0.5",
+      "decision": "a_1 = 1",
+      "expected_payoff": "a_1=1: Best=99.5, Worst=49.5; a_1=0: Best=50, Worst=0"
+    }
+  },
+  {
+    "provider": "mistral",
+    "neip": "global_scale",
+    "cfp": "min",
+    "llm_response": {
+      "cost": "c = 1.0",
+      "decision": "a_1 = 0",
+      "expected_payoff": "a_1=1: Best=99, Worst=0; a_1=0: Best=100, Worst=0"
+    }
+  },
+  {
+    "provider": "mistral",
+    "neip": "global_scale",
+    "cfp": "safety",
+    "llm_response": {
+      "cost": "c = 1.0",
+      "decision": "a_1 = 1",
+      "expected_payoff": "a_1=1: Best=99, Worst=98; a_1=0: Best=0, Worst=0"
+    }
+  },
+  {
+    "provider": "mistral",
+    "neip": "global_scale",
+    "cfp": "peace",
+    "llm_response": {
+      "cost": "c = 1.0",
+      "decision": "a_1 = 1",
+      "expected_payoff": "a_1=1: Best=99, Worst=99; a_1=0: Best=0, Worst=0"
+    }
+  },
+  {
+    "provider": "mistral",
+    "neip": "global_scale",
+    "cfp": "min",
+    "llm_response": {
+      "cost": "c = 2.0",
+      "decision": "a_1 = 0",
+      "expected_payoff": "a_1=1: Best=98, Worst=96; a_1=0: Best=100, Worst=0"
+    }
+  },
+  {
+    "provider": "mistral",
+    "neip": "global_scale",
+    "cfp": "safety",
+    "llm_response": {
+      "cost": "c = 2.0",
+      "decision": "a_1 = 1",
+      "expected_payoff": "a_1=1: Best=98, Worst=96; a_1=0: Best=0, Worst=0"
+    }
+  },
+  {
+    "provider": "mistral",
+    "neip": "global_scale",
+    "cfp": "peace",
+    "llm_response": {
+      "cost": "c = 2.0",
+      "decision": "a_1 = 1",
+      "expected_payoff": "a_1=1: Best=98, Worst=78; a_1=0: Best=100, Worst=0"
+    }
+  },
+  {
+    "provider": "mistral",
+    "neip": "global_scale",
+    "cfp": "min",
+    "llm_response": {
+      "cost": "c = 0.5",
+      "decision": "a_2 = 1",
+      "expected_payoff": "a_2=1: Best=199.5, Worst=49.5; a_2=0: Best=100, Worst=0"
+    }
+  },
+  {
+    "provider": "mistral",
+    "neip": "global_scale",
+    "cfp": "safety",
+    "llm_response": {
+      "cost": "c = 0.5",
+      "decision": "a_2 = 1",
+      "expected_payoff": "a_2=1: Best=199.5, Worst=49.5; a_2=0: Best=100, Worst=0"
+    }
+  },
+  {
+    "provider": "mistral",
+    "neip": "global_scale",
+    "cfp": "peace",
+    "llm_response": {
+      "cost": "c = 0.5",
+      "decision": "a_2 = 1",
+      "expected_payoff": "a_2=1: Best=199.5, Worst=99.5; a_2=0: Best=100, Worst=0"
+    }
+  },
+  {
+    "provider": "mistral",
+    "neip": "global_scale",
+    "cfp": "min",
+    "llm_response": {
+      "cost": "c = 1.0",
+      "decision": "a_2 = 1",
+      "expected_payoff": "a_2=1: Best=199, Worst=99; a_2=0: Best=100, Worst=0"
+    }
+  },
+  {
+    "provider": "mistral",
+    "neip": "global_scale",
+    "cfp": "safety",
+    "llm_response": {
+      "cost": "c = 1.0",
+      "decision": "a_2 = 1",
+      "expected_payoff": "a_2=1: Best=99, Worst=97; a_2=0: Best=100, Worst=0"
+    }
+  },
+  {
+    "provider": "mistral",
+    "neip": "global_scale",
+    "cfp": "peace",
+    "llm_response": {
+      "cost": "c = 1.0",
+      "decision": "a_2 = 1",
+      "expected_payoff": "a_2=1: Best=199, Worst=99; a_2=0: Best=100, Worst=0"
+    }
+  },
+  {
+    "provider": "mistral",
+    "neip": "global_scale",
+    "cfp": "min",
+    "llm_response": {
+      "cost": "c = 2.0",
+      "decision": "a_2 = 1",
+      "expected_payoff": "a_2=1: Best=98, Worst=96; a_2=0: Best=100, Worst=0"
+    }
+  },
+  {
+    "provider": "mistral",
+    "neip": "global_scale",
+    "cfp": "safety",
+    "llm_response": {
+      "cost": "c = 2.0",
+      "decision": "a_2 = 1",
+      "expected_payoff": "a_2=1: Best=98, Worst=96; a_2=0: Best=0, Worst=0"
+    }
+  },
+  {
+    "provider": "mistral",
+    "neip": "global_scale",
+    "cfp": "peace",
+    "llm_response": {
+      "cost": "c = 2.0",
+      "decision": "a_2 = 1",
+      "expected_payoff": "a_2=1: Best=98, Worst=76; a_2=0: Best=100, Worst=0"
+    }
+  },
+  {
+    "provider": "mistral",
+    "neip": "global_scale",
+    "cfp": "min",
+    "llm_response": {
+      "cost": "c = 0.5",
+      "decision": "a_3 = 1",
+      "expected_payoff": "a_3=1: Best=199.5, Worst=99.5; a_3=0: Best=100, Worst=0"
+    }
+  },
+  {
+    "provider": "mistral",
+    "neip": "global_scale",
+    "cfp": "safety",
+    "llm_response": {
+      "cost": "c = 0.5",
+      "decision": "a_3 = 1",
+      "expected_payoff": "a_3=1: Best=199.5, Worst=99.5; a_3=0: Best=100, Worst=0"
+    }
+  },
+  {
+    "provider": "mistral",
+    "neip": "global_scale",
+    "cfp": "peace",
+    "llm_response": {
+      "cost": "c = 0.5",
+      "decision": "a_3 = 1",
+      "expected_payoff": "a_3=1: Best=199.5, Worst=99.5; a_3=0: Best=100, Worst=0"
+    }
+  },
+  {
+    "provider": "mistral",
+    "neip": "global_scale",
+    "cfp": "min",
+    "llm_response": {
+      "cost": "c = 1.0",
+      "decision": "a_3 = 1",
+      "expected_payoff": "a_3=1: Best=199, Worst=99; a_3=0: Best=100, Worst=0"
+    }
+  },
+  {
+    "provider": "mistral",
+    "neip": "global_scale",
+    "cfp": "safety",
+    "llm_response": {
+      "cost": "c = 1.0",
+      "decision": "a_3 = 1",
+      "expected_payoff": "a_3=1: Best=198, Worst=98; a_3=0: Best=100, Worst=0"
+    }
+  },
+  {
+    "provider": "mistral",
+    "neip": "global_scale",
+    "cfp": "peace",
+    "llm_response": {
+      "cost": "c = 1.0",
+      "decision": "a_3 = 1",
+      "expected_payoff": "a_3=1: Best=199, Worst=99; a_3=0: Best=100, Worst=0"
+    }
+  },
+  {
+    "provider": "mistral",
+    "neip": "global_scale",
+    "cfp": "min",
+    "llm_response": {
+      "cost": "c = 2.0",
+      "decision": "a_3 = 1",
+      "expected_payoff": "a_3=1: Best=98, Worst=96; a_3=0: Best=100, Worst=0"
+    }
+  },
+  {
+    "provider": "mistral",
+    "neip": "global_scale",
+    "cfp": "safety",
+    "llm_response": {
+      "cost": "c = 2.0",
+      "decision": "a_3 = 1",
+      "expected_payoff": "a_3=1: Best=98, Worst=96; a_3=0: Best=100, Worst=0"
+    }
+  },
+  {
+    "provider": "mistral",
+    "neip": "global_scale",
+    "cfp": "peace",
+    "llm_response": {
+      "cost": "c = 2.0",
+      "decision": "a_3 = 1",
+      "expected_payoff": "a_3=1: Best=196, Worst=96; a_3=0: Best=100, Worst=0"
+    }
+  },
+  {
+    "provider": "mistral",
+    "neip": "global_scale",
+    "cfp": "min",
+    "llm_response": {
+      "cost": "c = 0.5",
+      "decision": "a_4 = 1",
+      "expected_payoff": "a_4=1: Best=99.5, Worst=49.5; a_4=0: Best=50, Worst=0"
+    }
+  },
+  {
+    "provider": "mistral",
+    "neip": "global_scale",
+    "cfp": "safety",
+    "llm_response": {
+      "cost": "c = 0.5",
+      "decision": "a_4 = 1",
+      "expected_payoff": "a_4=1: Best=99.5, Worst=49.5; a_4=0: Best=50, Worst=0"
+    }
+  },
+  {
+    "provider": "mistral",
+    "neip": "global_scale",
+    "cfp": "peace",
+    "llm_response": {
+      "cost": "c = 0.5",
+      "decision": "a_4 = 1",
+      "expected_payoff": "a_4=1: Best=100, Worst=50; a_4=0: Best=50, Worst=0"
+    }
+  },
+  {
+    "provider": "mistral",
+    "neip": "global_scale",
+    "cfp": "min",
+    "llm_response": {
+      "cost": "c = 1.0",
+      "decision": "a_4 = 0",
+      "expected_payoff": "a_4=1: Best=99, Worst=98; a_4=0: Best=100, Worst=0"
+    }
+  },
+  {
+    "provider": "mistral",
+    "neip": "global_scale",
+    "cfp": "safety",
+    "llm_response": {
+      "cost": "c = 1.0",
+      "decision": "a_4 = 1",
+      "expected_payoff": "a_4=1: Best=99, Worst=97; a_4=0: Best=0, Worst=0"
+    }
+  },
+  {
+    "provider": "mistral",
+    "neip": "global_scale",
+    "cfp": "peace",
+    "llm_response": {
+      "cost": "c = 1.0",
+      "decision": "a_4 = 1",
+      "expected_payoff": "a_4=1: Best=99, Worst=98; a_4=0: Best=100, Worst=0"
+    }
+  },
+  {
+    "provider": "mistral",
+    "neip": "global_scale",
+    "cfp": "min",
+    "llm_response": {
+      "cost": "c = 2.0",
+      "decision": "a_4 = 0",
+      "expected_payoff": "a_4=1: Best=98, Worst=96; a_4=0: Best=100, Worst=0"
+    }
+  },
+  {
+    "provider": "mistral",
+    "neip": "global_scale",
+    "cfp": "safety",
+    "llm_response": {
+      "cost": "c = 2.0",
+      "decision": "a_4 = 1",
+      "expected_payoff": "a_4=1: Best=98, Worst=96; a_4=0: Best=0, Worst=0"
+    }
+  },
+  {
+    "provider": "mistral",
+    "neip": "global_scale",
+    "cfp": "peace",
+    "llm_response": {
+      "cost": "c = 2.0",
+      "decision": "a_4 = 1",
+      "expected_payoff": "a_4=1: Best=98, Worst=96; a_4=0: Best=0, Worst=0"
+    }
+  }
+]

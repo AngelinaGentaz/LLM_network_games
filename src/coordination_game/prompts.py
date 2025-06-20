@@ -74,8 +74,7 @@ def get_system_prompt(neip = "baseline"):
     **Output Format:**
     Respond in the following JSON format:
       "cost": "c = {cost}",
-      "decision": "a_{player_id} = <your decision>",
-      "expected_payoff": "a_{player_id}=1: Best=<best expected payoff of Player {player_id} when playing 1>, Worst=<worst expected payoff of Player {player_id} when playing 1; a_{player_id}=0: Best=<best expected payoff of Player {player_id} when playing 0>, Worst=<worst expected payoff of Player {player_id} when playing 0>"
+      "decision": "a_{player_id} = <your decision>"
     Do NOT write down anything else in your output.
     """
     else:

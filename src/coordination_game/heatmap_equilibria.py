@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 DIR_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 TESTS_DIR = os.path.join(DIR_ROOT, "tests")
 
-# Mapping provider folder name -> human readable model string
+# Mapping provider folder name
 MODEL_MAP = {
     "anthropic": "Claude 3.7 Sonnet",
     "google":    "Gemini 2.0 Flash",
@@ -80,7 +80,7 @@ def main():
 
     for prov_dir in provider_dirs:
         prov = os.path.basename(prov_dir)
-        files = sorted(glob.glob(os.path.join(prov_dir, "results_*.json")))
+        files = sorted(glob.glob(os.path.join(prov_dir, "results_neip*.json")))
         for fp in files:
             parsed = parse_file(fp)
             for cfp_key, cost_map in parsed.items():
@@ -148,7 +148,7 @@ def main():
 
 
     fig.tight_layout()
-    out_path = os.path.join(TESTS_DIR, "coordination_heatmap.png")
+    out_path = os.path.join(TESTS_DIR, "coordination_heatmap_neip.png")
     fig.savefig(out_path, bbox_inches="tight", dpi=300)
     plt.close(fig)
     print(f"Saved heatmap: {out_path}")

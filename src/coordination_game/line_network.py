@@ -59,7 +59,7 @@ def main():
                     })
 
     # Save results
-    with open(os.path.join(provider_dir, f"results_{args.experiment_id}.json"), "w") as f:
+    with open(os.path.join(provider_dir, f"results_neip_{args.experiment_id}.json"), "w") as f:
         json.dump(results, f, indent=2)
     print(f"Results saved for {args.provider} in experiment {args.experiment_id}.")
 
