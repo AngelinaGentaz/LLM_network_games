@@ -221,7 +221,7 @@
     "cfp": "min",
     "llm_response": {
       "cost": "c = 2.0",
-      "decision": "a_3 = 0"
+      "decision": "a_3 = 1"
     }
   },
   {

@@ -67,7 +67,7 @@ def get_system_prompt(neip = "baseline"):
     - \( c > 0 \): Cost of choosing \( a_i = 1 \).
 
     **Game Rules:**
-    - You are assigned one player (e.g., Player 1).
+    - You are assigned one player.
     - You will make a decision simultaneously with other players based on your current understanding of their potential strategies.
     - The objective is to maximise your own payoff.
 
