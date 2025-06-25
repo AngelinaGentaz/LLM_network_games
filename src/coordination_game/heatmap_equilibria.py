@@ -49,15 +49,12 @@ def parse_file(path):
 
 
 def is_equilibrium(profile, cost):
-    """Check if profile is a Nash equilibrium for the given cost."""
     all_zero = (0, 0, 0, 0)
-    all_one  = (1, 1, 1, 1)
-    if cost < 1.0:
-        return profile == all_one
-    elif cost == 1.0:
-        return profile in (all_zero, all_one)
-    else:
+    all_one = (1, 1, 1, 1)
+    if cost > 1.0:
         return profile == all_zero
+    else:
+        return profile in (all_zero, all_one) 
 
 
 def main():
@@ -80,7 +77,7 @@ def main():
 
     for prov_dir in provider_dirs:
         prov = os.path.basename(prov_dir)
-        files = sorted(glob.glob(os.path.join(prov_dir, "results_neip*.json")))
+        files = sorted(glob.glob(os.path.join(prov_dir, "results_baseline*.json")))
         for fp in files:
             parsed = parse_file(fp)
             for cfp_key, cost_map in parsed.items():
@@ -148,7 +145,7 @@ def main():
 
 
     fig.tight_layout()
-    out_path = os.path.join(TESTS_DIR, "coordination_heatmap_neip.png")
+    out_path = os.path.join(TESTS_DIR, "coordination_heatmap.png")
     fig.savefig(out_path, bbox_inches="tight", dpi=300)
     plt.close(fig)
     print(f"Saved heatmap: {out_path}")
