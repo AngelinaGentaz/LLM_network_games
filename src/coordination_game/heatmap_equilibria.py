@@ -134,7 +134,7 @@ def main():
         ax.set_yticklabels(provider_labels)
         ax.set_xlabel("Cost")
         if idx == 0:
-            ax.set_ylabel("Provider")
+            ax.set_ylabel("Model")
 
         for i in range(len(provider_keys)):
             for j in range(len(cost_values)):

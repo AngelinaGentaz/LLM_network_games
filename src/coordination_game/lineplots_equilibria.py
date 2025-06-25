@@ -68,7 +68,7 @@ def aggregate():
     all_cfps = set()
     for prov_dir in provider_dirs:
         prov = os.path.basename(prov_dir)
-        files = sorted(glob.glob(os.path.join(prov_dir, "results_baseline.json")))
+        files = sorted(glob.glob(os.path.join(prov_dir, "results_baseline*.json")))
         for fp in files:
             parsed = parse_file(fp)
             for cfp_key, cost_map in parsed.items():

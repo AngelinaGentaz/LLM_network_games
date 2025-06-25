@@ -21,6 +21,10 @@ This repository contains a small experiment exploring how LLMs converge or not t
    MISTRAL_API_KEY=...
    ```
 
+### Workflow overview
+
+![Workflow of the line network game](images\workflow_codebase.png)
+
 ## Running the coordination game
 
 The main driver for the coordination game is [`src/coordination_game/line_network.py`](src/coordination_game/line_network.py).  A typical call looks like:
@@ -34,7 +38,7 @@ Results are written to `tests/<provider>/results_<id>.json`.
 
 Visualization utilities are provided:
 
-- [`aggregator.py`](src/coordination_game/aggregator.py) collects the profile distributions from the result files and creates bar charts per model.
+- [`aggregator.py`](src/coordination_game/aggregator.py) collects the profile/equilibirum distributions from the result files.
 - [`heatmap_equilibria.py`](src/coordination_game/heatmap_equilibria.py) plots a heatmap of the stable Nash equilibrium probability across models, costs and Context Framing Perturbations (CFP).
 
 
