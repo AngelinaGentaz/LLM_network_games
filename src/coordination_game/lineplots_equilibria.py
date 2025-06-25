@@ -1,6 +1,7 @@
 import os
 import glob
 import json
+import math
 from collections import defaultdict
 import numpy as np
 import matplotlib.pyplot as plt
@@ -12,7 +13,7 @@ MODEL_MAP = {
     "anthropic": "Claude 3.7 Sonnet",
     "google":    "Gemini 2.0 Flash",
     "openai":    "GPT-4o",
-    "mistral":   "mistral-medium-2505",
+    "mistral":   "Mistral Medium",
 }
 
 
@@ -46,11 +47,10 @@ def parse_file(path):
 def is_equilibrium(profile, cost):
     all_zero = (0, 0, 0, 0)
     all_one = (1, 1, 1, 1)
-    if cost > 1.0:
+    if cost > 1.0 or cost < 1.0: # STABLE EQUILIBRIUM
         return profile == all_zero
     else:
         return profile in (all_zero, all_one) 
-
 
 
 def hamming_distance(profile, cost):
@@ -150,39 +150,56 @@ def plot_equilibrium_prob_per_cfp(results, costs, providers, cfps):
 
 def plot_grouped_bar(results, costs, providers, cfps):
     """Grouped bar chart of equilibrium probability per provider."""
-    x = np.arange(len(costs))
+    x     = np.arange(len(costs))
     width = 0.8 / len(cfps)
     palette = plt.get_cmap("Set2")
 
-    fig, axes = plt.subplots(1, len(providers), figsize=(4 * len(providers), 3), sharey=True)
-    if len(providers) == 1:
-        axes = [axes]
+    # --- lay out 2 rows, ceil(#providers/2) cols ---
+    n_prov = len(providers)
+    ncols  = math.ceil(n_prov / 2)
+    fig, axes = plt.subplots(2, ncols,
+                             figsize=(4 * ncols, 6),  # taller figure
+                             sharey=True)
+    axes = axes.flatten()  # make it easy to index
 
     for p_idx, prov in enumerate(providers):
         ax = axes[p_idx]
         for c_idx, cfp in enumerate(cfps):
-            vals = []
-            for c in costs:
-                rec = results[cfp].get(prov, {}).get(c)
-                if rec and rec["total"] > 0:
-                    vals.append(rec["eq"] / rec["total"])
-                else:
-                    vals.append(0.0)
-            pos = x + (c_idx - (len(cfps) - 1) / 2) * width
-            ax.bar(pos, vals, width=width, color=palette(c_idx), label=f"CFP {cfp}")
+            vals = [
+                (results[cfp].get(prov, {})
+                         .get(c, {"eq":0,"total":1})["eq"] /
+                 results[cfp].get(prov, {})
+                         .get(c, {"eq":0,"total":1})["total"])
+                for c in costs
+            ]
+            pos = x + (c_idx - (len(cfps)-1)/2)*width
+            ax.bar(pos, vals, width=width,
+                   color=palette(c_idx),
+                   label=f"{cfp}")
 
         ax.set_title(MODEL_MAP.get(prov, prov))
         ax.set_xticks(x)
         ax.set_xticklabels([str(c) for c in costs])
         ax.set_xlabel("Cost")
         ax.set_ylim(0, 1)
-        ax.grid(True, linestyle="--", color="lightgrey", axis="y")
-        if p_idx == 0:
-            ax.set_ylabel("Equilibrium probability")
+        ax.grid(True, linestyle="--", axis="y")
+        if p_idx % ncols == 0:
+            ax.set_ylabel("Stable Nash equilibrium probability")
 
-    axes[-1].legend(fontsize=8)
-    fig.tight_layout()
-    out_path = os.path.join(TESTS_DIR, "equilibrium_prob_grouped_bar.png")
+    # hide any empty subplots
+    for idx in range(n_prov, len(axes)):
+        axes[idx].axis("off")
+
+    # gather handles from one of the axes
+    handles, labels = axes[0].get_legend_handles_labels()
+    # place shared legend on the right
+    fig.legend(handles, labels,
+               loc='center right',
+               title='CFP',
+               bbox_to_anchor=(1.03, 0.51))
+    # make room for the legend
+    fig.tight_layout(rect=[0, 0, 0.88, 1])
+    out_path = os.path.join(TESTS_DIR, "stable_NE_prob_grouped_bar.png")
     fig.savefig(out_path, dpi=300, bbox_inches="tight")
     plt.close(fig)
     print(f"Saved grouped bar chart: {out_path}")

@@ -2,7 +2,7 @@
 
 Strategic Reasoning of LLM-Based Agents in Network Game Environments
 
-This repository contains a small experiment exploring how LLMs converge or not to the (stable) Nash equilibrium in a simple network coordination game.  The code lets you run players backed by different LLM providers and aggregate the resulting play distributions.
+This repository contains a small experiment exploring how LLMs converge or not to the Nash equilibrium in a simple network coordination game (strategic complements).  The code lets you run players backed by different LLM providers and aggregate the resulting play distributions.
 
 ## Setup
 
@@ -10,7 +10,7 @@ This repository contains a small experiment exploring how LLMs converge or not t
    ```bash
    pip install -r requirements.txt
    ```
-   You will also need the SDKs for any providers you wish to use (`openai`, `anthropic`, `mistralai`, etc.).
+   You will also need the SDKs for any providers you wish to use (`openai`, `anthropic`, `mistral`, etc.).
 
 2. **API keys**
    Create a `.env` file in the repository root containing the API keys for the models you intend to call:
@@ -21,9 +21,6 @@ This repository contains a small experiment exploring how LLMs converge or not t
    MISTRAL_API_KEY=...
    ```
 
-### Workflow overview
-
-![Workflow of the line network game](images\workflow_codebase.png)
 
 ## Running the coordination game
 
@@ -36,10 +33,15 @@ python line_network.py --players 1 2 3 4 --costs 0.5 1 2 \
 
 Results are written to `tests/<provider>/results_<id>.json`.
 
+
+### Workflow overview
+
+![Workflow of the line network game](images/workflow_codebase.png)
+
 Visualization utilities are provided:
 
 - [`aggregator.py`](src/coordination_game/aggregator.py) collects the profile/equilibirum distributions from the result files.
-- [`heatmap_equilibria.py`](src/coordination_game/heatmap_equilibria.py) plots a heatmap of the stable Nash equilibrium probability across models, costs and Context Framing Perturbations (CFP).
+- [`heatmap_equilibria.py`](src/coordination_game/heatmap_equilibria.py) plots a heatmap of the Nash equilibrium probability across models, costs and Context Framing Perturbations (CFP).
 
 
 ## Repository layout

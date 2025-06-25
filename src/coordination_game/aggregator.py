@@ -48,7 +48,7 @@ if not provider_dirs:
 for provider_dir in provider_dirs:
     provider = os.path.basename(provider_dir).capitalize()
     files = sorted(
-        glob.glob(os.path.join(provider_dir, "results_baseline.json")),
+        glob.glob(os.path.join(provider_dir, "results_baseline*.json")),
         key=lambda fn: int(os.path.splitext(os.path.basename(fn))[0].split("_")[1])
     )
     if not files:
