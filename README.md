@@ -2,7 +2,7 @@
 
 Strategic Reasoning of LLM-Based Players in Network Game Environments
 
-This repository contains a small experiment exploring how LLMs converge or not to the Nash equilibrium in a simple network coordination game (strategic complements).  The code lets you run players backed by different LLM providers and aggregate the resulting play distributions.
+This repository contains a small experiment exploring how LLMs converge or not to the Nash equilibrium in a simple network coordination game (strategic complements on a four node line network).  The code lets you run players backed by different LLM providers and aggregate the resulting play distributions.
 
 ## Setup
 
@@ -39,7 +39,7 @@ Results are written to `tests/<provider>/results_<id>.json`.
 ![Workflow of the line network game](images/workflow_codebase.png)
 
 ### Robustness 
-We define a Nash Equilibirum Invariant Perturbation (NEIP) as a modification to the numerical values within a game’s payoff structure (in the system prompt) that preserves the set of Nash equilibria. A Context Framing Perturbation (CFP) can be viewed as a special —purely linguistic— instance of a NEIP in which the numeric adjustments where the perturbation acts only on the textual presentation of the game (e.g.tone, narrative embedding, role labels etc.).  
+We define a Nash Equilibirum Invariant Perturbation (NEIP) as a modification to the numerical values within a game’s payoff structure (in the system prompt) that preserves the set of Nash equilibria. A Context Framing Perturbation (CFP) can be viewed as a special —purely linguistic— instance of a NEIP in which the perturbation acts only on the textual presentation of the game (e.g.tone, narrative embedding, role labels etc.).  
 
 
 Visualization utilities are provided:
